@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Get full version name from ../app/build.gradle
-fullVersion=`grep "versionName" ../app/build.gradle | tr -d " " | tr -d "\"" | tr -d "versionName"`
+fullVersion=`grep "versionName" ../SmartReceipts/SmartReceipts-Info.plist | tr -d " " | tr -d "\"" | tr -d "versionName"`
 printf "\n"
 echo "OLD VERSION NUMBER: $fullVersion"
 
