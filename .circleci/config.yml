@@ -15,9 +15,6 @@ jobs:
           name: Wait 1 Second (Need to increment to 900 soon)
           command: sleep 1
       - checkout
-      - run:
-          name: Update xcodeproj gem to prevent CocoaPods install from failing
-          command: gem update xcodeproj
       # Install CocoaPods
       - run:
           name: Install CocoaPods
