@@ -11,6 +11,9 @@ jobs:
       xcode: "8.3.3"
 
     steps:
+      - run:
+          name: Wait 1 Second (Need to increment to 900 soon)
+          command: sleep 1
       - checkout
       - run:
           name: Update xcodeproj gem to prevent CocoaPods install from failing
