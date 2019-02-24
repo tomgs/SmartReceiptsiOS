@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - run:
+          name: Checking PHP
+          command: php -i
+      - run:
           name: Wait 1 Second (Need to increment to 900 soon)
           command: sleep 1
       - checkout
