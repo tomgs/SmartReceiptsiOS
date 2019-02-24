@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - checkout
-
+      - run:
+          name: Update xcodeproj gem to prevent CocoaPods install from failing
+          command: gem update xcodeproj
       # Install CocoaPods
       - run:
           name: Install CocoaPods
