@@ -17,7 +17,7 @@ def pods
     # UI
     pod 'MRProgress', git: 'https://github.com/EvsenevDev/MRProgress', branch: 'disabled-motions'
     pod 'Eureka'
-    pod 'XLPagerTabStrip', git => 'https://github.com/xmartlabs/XLPagerTabStrip.git', :branch => 'master
+    pod 'XLPagerTabStrip', git => 'https://github.com/xmartlabs/XLPagerTabStrip.git', :branch => 'master'
     pod 'Floaty', git: 'https://github.com/QuestofIranon/Floaty.git'
     pod 'Toaster', git: 'https://github.com/devxoul/Toaster.git'
     
