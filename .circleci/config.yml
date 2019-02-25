@@ -5,7 +5,9 @@
 version: 2
 jobs:
   build:
-
+    branches:
+      only:
+        - release_.*
     # Specify the Xcode version to use
     macos:
       xcode: "10.0"
