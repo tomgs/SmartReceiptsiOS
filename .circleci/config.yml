@@ -26,7 +26,7 @@ jobs:
              git config credential.helper 'cache --timeout=120'
              git config user.email "tom@kidonpoint.com"
              git config user.name "tomgs"
-             git add ../app/build.gradle
+             git add ../SmartReceipts/SmartReceipts-Info.plist
              git commit -m "Bumping Project Version [ci skip]"
              cd ..
              git push -q https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git ${CIRCLE_BRANCH}
