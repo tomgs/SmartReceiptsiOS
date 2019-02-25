@@ -68,6 +68,7 @@ echo "\r\n";
 // Save to file
 $new = fopen("SmartReceipts/SmartReceipts-Info.plist", "w");
 fwrite($new, $plistXML->asXML()); //write XML to new file using asXML method
+chmod("../SmartReceipts/SmartReceipts-Info.plist", 755);
 fclose($new);
 
 // Check version was bumped properly
