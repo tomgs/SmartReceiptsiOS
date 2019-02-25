@@ -29,6 +29,7 @@ jobs:
              git add ../SmartReceipts/SmartReceipts-Info.plist
              git commit -m "Bumping Project Version [ci skip]"
              cd ..
+             echo "https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git"
              git push https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git ${CIRCLE_BRANCH}
       # Update CocoaPods
       - run:
