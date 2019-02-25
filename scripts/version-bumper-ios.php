@@ -5,14 +5,14 @@ echo "---- BUMPING VERSION ----";
 echo "\r\n";
 echo "\r\n";
 
-echo "Parsing ../../SmartReceipts/SmartReceipts-Info-Temp.plist....";
+echo "Parsing SmartReceipts/SmartReceipts-Info.plist....";
 echo "\r\n";
 
-// Parse ../SmartReceipts/SmartReceipts-Info-Temp.plist
-if (file_exists('../SmartReceipts/SmartReceipts-Info-Temp.plist')) {
-    $plistXML = simplexml_load_file('../SmartReceipts/SmartReceipts-Info-Temp.plist');
+// Parse SmartReceipts/SmartReceipts-Info.plist
+if (file_exists('SmartReceipts/SmartReceipts-Info.plist')) {
+    $plistXML = simplexml_load_file('SmartReceipts/SmartReceipts-Info.plist');
 } else {
-    exit('Failed to open ../SmartReceipts/SmartReceipts-Info-Temp.plist');
+    exit('Failed to open SmartReceipts/SmartReceipts-Info.plist');
 }
 
 // Get the full version from the XML Object
@@ -62,23 +62,23 @@ $plistXML->dict->string[9] = $versionCode;
 // Edit full version in the xml object
 $plistXML->dict->string[7] = $fullVersion;
 
-echo "Writing to ../SmartReceipts/SmartReceipts-Info-Temp.plist....";
+echo "Writing to SmartReceipts/SmartReceipts-Info.plist....";
 echo "\r\n";
 
 // Save to file
-$new = fopen("../SmartReceipts/SmartReceipts-Info-Temp.plist", "w");
+$new = fopen("SmartReceipts/SmartReceipts-Info.plist", "w");
 fwrite($new, $plistXML->asXML()); //write XML to new file using asXML method
 fclose($new);
 
 // Check version was bumped properly
-echo "Checking to see we wrote correctly to ../SmartReceipts/SmartReceipts-Info-Temp.plist....";
+echo "Checking to see we wrote correctly to SmartReceipts/SmartReceipts-Info.plist....";
 echo "\r\n";
 
-// Parse ../SmartReceipts/SmartReceipts-Info-Temp.plist (after editing)
-if (file_exists('../SmartReceipts/SmartReceipts-Info-Temp.plist')) {
-    $plistXML = simplexml_load_file('../SmartReceipts/SmartReceipts-Info-Temp.plist');
+// Parse SmartReceipts/SmartReceipts-Info.plist (after editing)
+if (file_exists('SmartReceipts/SmartReceipts-Info.plist')) {
+    $plistXML = simplexml_load_file('SmartReceipts/SmartReceipts-Info.plist');
 } else {
-    exit('Failed to open ../SmartReceipts/SmartReceipts-Info-Temp.plist');
+    exit('Failed to open SmartReceipts/SmartReceipts-Info.plist');
 }
 
 // Check version code bump
