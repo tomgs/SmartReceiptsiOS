@@ -12,12 +12,24 @@ jobs:
 
     steps:
       - run:
-          name: Checking PHP
-          command: php -i
-      - run:
           name: Wait 1 Second (Need to increment to 900 soon)
           command: sleep 1
       - checkout
+      - run:
+          name: Bump Version & Push To Repo
+          command: |
+             cd scripts
+             php version-bumper-ios.php
+             printf "\n"
+             echo "-- Pushing To Github --"
+             printf "\n"
+             git config credential.helper 'cache --timeout=120'
+             git config user.email "tom@kidonpoint.com"
+             git config user.name "tomgs"
+             git add ../app/build.gradle
+             git commit -m "Bumping Project Version [ci skip]"
+             cd ..
+             git push -q https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git ${CIRCLE_BRANCH}
       # Update CocoaPods
       - run:
           name: Update CocoaPods
