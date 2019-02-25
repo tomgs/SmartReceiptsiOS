@@ -9,10 +9,10 @@ echo "Parsing SmartReceipts/SmartReceipts-Info.plist....";
 echo "\r\n";
 
 // Parse SmartReceipts/SmartReceipts-Info.plist
-if (file_exists('SmartReceipts/SmartReceipts-Info.plist')) {
-    $plistXML = simplexml_load_file('SmartReceipts/SmartReceipts-Info.plist');
+if (file_exists('../SmartReceipts/SmartReceipts-Info.plist')) {
+    $plistXML = simplexml_load_file('../SmartReceipts/SmartReceipts-Info.plist');
 } else {
-    exit('Failed to open SmartReceipts/SmartReceipts-Info.plist');
+    exit('Failed to open ../SmartReceipts/SmartReceipts-Info.plist');
 }
 
 // Get the full version from the XML Object
