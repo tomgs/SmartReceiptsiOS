@@ -10,11 +10,33 @@ jobs:
         - release_.*
     # Specify the Xcode version to use
     macos:
-      xcode: "8.3.3"
+      xcode: "10.0"
 
     steps:
+      - run:
+          name: Wait 1 Second (Need to increment to 900 soon)
+          command: sleep 1
       - checkout
-
+      - run:
+          name: Bump Version & Push To Repo
+          command: |
+             cd scripts
+             php version-bumper-ios.php
+             printf "\n"
+             echo "-- Pushing To Github --"
+             printf "\n"
+             git config credential.helper 'cache --timeout=120'
+             git config user.email "tom@kidonpoint.com"
+             git config user.name "tomgs"
+             git add ../SmartReceipts/SmartReceipts-Info.plist
+             git commit -m "Bumping Project Version [ci skip]"
+             cd ..
+             echo "https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git"
+             git push https://${GITHUB_API_TOKEN}@github.com/tomgs/SmartReceiptsiOS.git ${CIRCLE_BRANCH}
+      # Update CocoaPods
+      - run:
+          name: Update CocoaPods
+          command: pod repo update
       # Install CocoaPods
       - run:
           name: Install CocoaPods
@@ -23,9 +45,9 @@ jobs:
       # Build the app and run tests
       - run:
           name: Build and run tests
-          command: fastlane scan
+          command: fastlane scan --scheme "SmartReceipts"
           environment:
-            SCAN_DEVICE: iPhone 6
+            SCAN_DEVICE: iPhone X
             SCAN_SCHEME: WebTests
 
       # Collect XML test results data to show in the UI,
